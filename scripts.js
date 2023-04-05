@@ -1,6 +1,7 @@
 const playBoard = document.querySelector('.play-board')
 const scoreElement = document.querySelector('.score')
 const highScoreElement = document.querySelector('.high-score')
+const controls = document.querySelectorAll('.controls i')
 
 let gameOver = false
 
@@ -38,6 +39,11 @@ let changeDirection = e => {
   velocityY = 0
  }
 }
+
+controls.forEach(key => {
+ // Calling changeDirection on each key click and passing key dataset value as an object
+ key.addEventListener('click', () => changeDirection({ key: key.dataset.key }))
+})
 
 const handleGameOver = () => {
  // Clearing the timer and reloading the page on game over
